@@ -1,6 +1,6 @@
 ### Issue 😱:
 
-Closes https://github.com/Skolaczk/next-starter/issues
+Closes https://github.com/stefan-ysh/how-long-is-it/issues
 
 ### What has been done ✅:
 
