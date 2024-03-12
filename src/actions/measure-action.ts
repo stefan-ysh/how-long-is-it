@@ -1,26 +1,59 @@
 'use server';
 const objects = [
-  { item: '铅笔', length: 0.19 },
-  { item: 'A4纸', length: 2.97 },
-  { item: '智能手机', length: 1.55 },
-  { item: '成人手掌宽度', length: 0.85 },
-  { item: '成人手臂展开长度', length: 17.0 },
-  { item: '标准篮球架高度', length: 30.5 },
-  { item: '单人床', length: 20.0 },
-  { item: '轿车', length: 45.0 },
-  { item: '标准足球', length: 0.07 },
-  { item: '成人身高', length: 1.75 },
-  { item: '标准门高', length: 2.04 },
-  { item: '标准游泳池长度', length: 25 },
-  { item: '标准跑道一圈', length: 400 },
-  { item: '电视（55英寸）', length: 1.3 },
-  { item: '冰箱（双门）', length: 1.8 },
-  { item: '洗衣机（前开门）', length: 0.6 },
-  { item: '沙发（三人座）', length: 2.2 },
-  { item: '餐桌（圆形）', length: 1.5 },
-  { item: '笔记本电脑（13英寸）', length: 0.33 },
-  { item: '微波炉', length: 0.4 },
-  { item: '书架（标准尺寸）', length: 1.8 },
+  {
+    item: '铅笔',
+    length: 0.19,
+    type: 'length',
+    description: '常见铅笔长度约为 19cm',
+  },
+  {
+    item: 'A4纸',
+    length: 0.297,
+    type: 'length',
+    description: 'A4纸长度约为 29.7cm',
+  },
+  {
+    item: 'A4纸',
+    length: 0.21,
+    type: 'width',
+    description: 'A4纸宽度约为 21.0cm',
+  },
+  {
+    item: '成人手掌',
+    length: 0.085,
+    type: 'width',
+    description: '成人手掌宽度约为 8.5cm',
+  },
+  {
+    item: '标准篮球架',
+    length: 3.05,
+    type: 'height',
+    description: '标准篮球架高度约为 3.05m',
+  },
+  {
+    item: '轿车',
+    length: 4,
+    type: 'length',
+    description: '轿车一般的长度在 3.8m 到 4.3m 区间，此处取 4.0m',
+  },
+  {
+    item: '标准足球',
+    length: 105,
+    type: 'length',
+    description: '标准足球长度约为 105cm',
+  },
+  {
+    item: '成人',
+    length: 1.7,
+    tyle: 'height',
+    description: '正常成年人平均身高约为 1.7cm',
+  },
+  {
+    item: '房门',
+    length: 2,
+    type: 'height',
+    description: '常见家用房门的高度约为 2m',
+  },
 ];
 export const measureAction = async (length: number | string) => {
   if (typeof length === 'string') {
@@ -31,7 +64,11 @@ export const measureAction = async (length: number | string) => {
   }
   // 随机取一个 objects 中的对象
   const object = objects[Math.floor(Math.random() * objects.length)];
-  const { item, length: objectLength } = object;
+  const { item, length: objectLength, type } = object;
 
-  return { message: `相当于 ${(length / objectLength).toFixed(2)} 个${item}!` };
+  return {
+    message: `
+    相当于 ${(length / objectLength).toFixed(2)} 个${item}${type === 'length' ? '长' : type === 'width' ? '宽' : '高'}!
+    `,
+  };
 };
