@@ -1,13 +1,13 @@
 import { env } from '@/env.mjs';
 
 export const siteConfig = {
-  title: 'Next.js Starter',
+  title: 'How long is it',
   description:
     'A How long is it, packed with features like TypeScript, Tailwind CSS, Next-auth, Eslint, testing tools and more. Jumpstart your project with efficiency and style.',
   keywords: [
     'Next.js',
     'React',
-    'Next.js starter',
+    'How long is it',
     'Next.js boilerplate',
     'Starter Template',
     'Tailwind CSS',
