@@ -1,9 +1,10 @@
-import Link from 'next/link';
-
-// import { getServerSession } from 'next-auth';
+// import { ThemeToggle } from 'next-auth';
 // import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 // import { SignInButton } from '@/components/navbar/sign-in-button';
+import Link from 'next/link';
+
 import { ThemeToggle } from '@/components/navbar/theme-toggle';
+
 // import { UserDropdown } from '@/components/navbar/user-dropdown';
 
 export const Navbar = async () => {

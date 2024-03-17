@@ -55,20 +55,32 @@ const objects = [
     description: '常见家用房门的高度约为 2m',
   },
 ];
-export const measureAction = async (length: number | string) => {
+const convertUnit2Meter = (unit: string, length: number) => {
+  switch (unit) {
+    case 'cm':
+      return length / 100;
+    case 'mm':
+      return length / 1000;
+
+    default:
+      return length;
+  }
+};
+export const measureAction = async (unit: string, length: number | string) => {
   if (typeof length === 'string') {
     length = parseFloat(length);
   }
   if (isNaN(length)) {
     return { message: '请输入一个有效的数字' };
   }
+  const len = convertUnit2Meter(unit, length);
   // 随机取一个 objects 中的对象
   const object = objects[Math.floor(Math.random() * objects.length)];
   const { item, length: objectLength, type } = object;
 
   return {
     message: `
-    相当于 ${(length / objectLength).toFixed(2)} 个${item}${type === 'length' ? '长' : type === 'width' ? '宽' : '高'}!
+    相当于 ${(len / objectLength).toFixed(2)} 个${item}${type === 'length' ? '长' : type === 'width' ? '宽' : '高'}!
     `,
   };
 };
