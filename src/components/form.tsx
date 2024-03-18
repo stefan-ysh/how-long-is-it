@@ -46,7 +46,6 @@ export const HeroForm = () => {
   const { toast } = useToast();
 
   const onSubmit = async ({ length }: FormSchema) => {
-    console.log('[ length ] >', length);
     const { message } = await measureAction(unit, length);
 
     toast({ description: message });
@@ -56,7 +55,6 @@ export const HeroForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((v) => {
-          console.log('form.handleSubmit');
           onSubmit(v);
         })}
         className="flex gap-3"
