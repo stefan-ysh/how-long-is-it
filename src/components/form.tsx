@@ -85,7 +85,14 @@ export const HeroForm = () => {
             setUnit(unit);
           }}
         />
-        <Button variant="secondary" type="submit">
+        <Button
+          variant="secondary"
+          type="submit"
+          disabled={!form.formState.isValid}
+          style={{
+            cursor: !form.formState.isValid ? 'not-allowed' : 'pointer',
+          }}
+        >
           Measure
         </Button>
       </form>
